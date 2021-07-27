@@ -1,17 +1,41 @@
-import React from 'react';
+import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
+
 import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+import Quote from './quote/quote.js';
+import ButtonHolder from './buttonHolder/buttonHolder.js';
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+const url = 'https://api.quotable.io';
+
+class App extends Component{
+  state = {
+    quote: 'Think of how stupid the average person is, and realize half of them are stupider than that.',
+    author: 'George Carlin'
+  }
+
+  handleClick = () => {
+    fetch(url + '/random')
+      .then(response => response.json())
+      .then(data => {
+        this.setState({
+          quote: data.content,
+          author: data.author
+        });
+      })
+      .catch(err => console.log('oops', err));
+  }
+
+  render(){
+    return(
+      <div className="card">
+        <Quote
+          quote={this.state.quote}
+          author={this.state.author}/>
+        <ButtonHolder clicked={this.handleClick}/>
+      </div>
+    );
+  };
+};
+
+ReactDOM.render(<App />, document.getElementById("root"));

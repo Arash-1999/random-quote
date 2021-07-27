@@ -1,0 +1,13 @@
+.quote-holder{
+  color: #ccc;
+  border-bottom: 3px dashed #eee;
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+.quote{
+  text-align: center;
+}
+.author{
+  text-align: right;
+  margin: 1rem;
+}

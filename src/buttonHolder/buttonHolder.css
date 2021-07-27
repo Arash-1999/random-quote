@@ -1,0 +1,25 @@
+button, a{
+  display: inline-block;
+  font-size: 1.2rem;
+  outline: none;
+  background: transparent;
+  padding: 5px 1rem;
+  border: 2px dashed #eee;
+  color: #ccc;
+  margin: .4rem;
+  cursor: pointer;
+  background: rgba(255, 255, 255, .07);
+  text-align: center;
+}
+button:hover, a:hover{
+  background: rgba(255, 255, 255, .2);
+}
+.btns {
+  display: flex;
+  flex-direction: column;
+}
+.btn-holder{
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+}
